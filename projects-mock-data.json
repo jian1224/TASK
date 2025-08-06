@@ -1,0 +1,142 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "CSAT Customer Satisfaction",
+      "description": "提升客戶滿意度指標",
+      "budget": 15.5,
+      "owner": "wei",
+      "subTasks": [
+        {
+          "id": 101,
+          "name": "客戶調查問卷設計",
+          "assignee": "張三",
+          "hours": 16,
+          "status": "completed"
+        },
+        {
+          "id": 102,
+          "name": "滿意度數據分析",
+          "assignee": "李四",
+          "hours": 24,
+          "status": "in-progress"
+        },
+        {
+          "id": 103,
+          "name": "改善方案制定",
+          "assignee": "王五",
+          "hours": 32,
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MRR Revenue Growth",
+      "description": "增加月度經常性收入",
+      "budget": 25.0,
+      "owner": "Sarah Chen",
+      "subTasks": [
+        {
+          "id": 201,
+          "name": "市場分析報告",
+          "assignee": "趙六",
+          "hours": 40,
+          "status": "completed"
+        },
+        {
+          "id": 202,
+          "name": "銷售策略優化",
+          "assignee": "張三",
+          "hours": 56,
+          "status": "in-progress"
+        },
+        {
+          "id": 203,
+          "name": "客戶留存分析",
+          "assignee": "李四",
+          "hours": 28,
+          "status": "pending"
+        },
+        {
+          "id": 204,
+          "name": "定價策略調整",
+          "assignee": "王五",
+          "hours": 20,
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "NPS Recommendation Score",
+      "description": "提升淨推薦值分數",
+      "budget": 8.5,
+      "owner": "Mike Johnson",
+      "subTasks": [
+        {
+          "id": 301,
+          "name": "NPS 調查系統建置",
+          "assignee": "趙六",
+          "hours": 48,
+          "status": "completed"
+        },
+        {
+          "id": 302,
+          "name": "客戶回饋收集",
+          "assignee": "張三",
+          "hours": 20,
+          "status": "in-progress"
+        }
+      ]
+    }
+  ],
+  "assignees": [
+    {
+      "id": "zhang-san",
+      "name": "張三",
+      "email": "zhang.san@company.com",
+      "department": "產品部"
+    },
+    {
+      "id": "li-si",
+      "name": "李四",
+      "email": "li.si@company.com",
+      "department": "數據分析部"
+    },
+    {
+      "id": "wang-wu",
+      "name": "王五",
+      "email": "wang.wu@company.com",
+      "department": "策略規劃部"
+    },
+    {
+      "id": "zhao-liu",
+      "name": "趙六",
+      "email": "zhao.liu@company.com",
+      "department": "技術部"
+    }
+  ],
+  "taskStatuses": [
+    {
+      "value": "pending",
+      "label": "待開始",
+      "color": "#f0f0f0"
+    },
+    {
+      "value": "in-progress",
+      "label": "進行中",
+      "color": "#fff3cd"
+    },
+    {
+      "value": "completed",
+      "label": "已完成",
+      "color": "#d4edda"
+    },
+    {
+      "value": "on-hold",
+      "label": "暫停",
+      "color": "#f8d7da"
+    }
+  ]
+}
