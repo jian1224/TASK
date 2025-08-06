@@ -417,6 +417,17 @@
             border-color: #2196f3;
         }
 
+        .toolbar-btn.work-hours-btn {
+            background: #ff9800;
+            color: white;
+            border-color: #ff9800;
+        }
+
+        .toolbar-btn.work-hours-btn:hover {
+            background: #f57c00;
+            border-color: #f57c00;
+        }
+
         .toolbar-icon {
             width: 16px;
             height: 16px;
@@ -770,95 +781,130 @@
             display: block;
         }
 
-        /* 小地圖樣式 - 添加到現有CSS */
-.minimap-container {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 200px;
-    height: 120px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    z-index: 101;
-    overflow: hidden;
-}
+        /* 工時節點模態框樣式 */
+        #workHoursModal .modal-content {
+            width: 600px;
+            max-width: 90%;
+        }
 
-.minimap-container svg text {
-    font-family: Arial, "Microsoft JhengHei", sans-serif !important;
-    font-size: 10px !important;
-    font-weight: bold !important;
-    fill: #333 !important;
-    stroke: none !important;
-    text-anchor: middle !important;
-    dominant-baseline: middle !important;
-}
+        .work-hours-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-/* 白色背景上的文字使用深色 */
-.minimap-container svg rect[fill="#fff"] + text,
-.minimap-container svg rect[fill="white"] + text {
-    fill: #333 !important;
-    stroke: rgba(255, 255, 255, 0.8) !important;
-    stroke-width: 2px !important;
-    paint-order: stroke fill !important;
-}
+        .work-hours-form .form-group.full-width {
+            grid-column: span 2;
+        }
 
-/* 深色背景上的文字使用淺色 */
-.minimap-container svg rect[fill="#4287f5"] + text,
-.minimap-container svg rect[fill*="blue"] + text {
-    fill: #fff !important;
-    stroke: rgba(0, 0, 0, 0.3) !important;
-    stroke-width: 1px !important;
-    paint-order: stroke fill !important;
-}
+        /* 日期輸入樣式 */
+        input[type="date"] {
+            appearance: none;
+            -webkit-appearance: none;
+        }
 
-/* Dashboard 小地圖特殊樣式 */
-.mini-mindmap svg text {
-    font-family: Arial, "Microsoft JhengHei", sans-serif !important;
-    font-size: 8px !important;
-    font-weight: bold !important;
-    fill: #333 !important;
-}
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background-color: #2196f3;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+        }
 
-/* 確保小地圖容器不裁剪文字 */
-.minimap-container,
-.mini-mindmap {
-    overflow: visible !important;
-}
+        /* 工時節點特殊樣式 */
+        .work-hours-node {
+            background: #ff9800 !important;
+            border-color: #f57c00 !important;
+        }
 
-.minimap-container svg,
-.mini-mindmap svg {
-    overflow: visible !important;
-}
+        .work-hours-node-text {
+            color: white !important;
+            font-weight: bold !important;
+        }
 
-.minimap-content-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
+        /* 小地圖樣式 */
+        .minimap-container {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 200px;
+            height: 120px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 101;
+            overflow: hidden;
+        }
 
-.minimap-svg-container {
-    position: absolute;
-    transform-origin: left top;
-    width: 100%;
-    height: 100%;
-}
+        .minimap-container svg text {
+            font-family: Arial, "Microsoft JhengHei", sans-serif !important;
+            font-size: 10px !important;
+            font-weight: bold !important;
+            fill: #333 !important;
+            stroke: none !important;
+            text-anchor: middle !important;
+            dominant-baseline: middle !important;
+        }
 
-.minimap-viewport {
-    position: absolute;
-    border: 2px solid #2196f3;
-    background: rgba(33, 150, 243, 0.1);
-    transition: all 0.3s ease;
-    cursor: move;
-}
+        .minimap-container svg rect[fill="#fff"] + text,
+        .minimap-container svg rect[fill="white"] + text {
+            fill: #333 !important;
+            stroke: rgba(255, 255, 255, 0.8) !important;
+            stroke-width: 2px !important;
+            paint-order: stroke fill !important;
+        }
 
-.minimap-viewport.no-transition {
-    transition: none;
-}
+        .minimap-container svg rect[fill="#4287f5"] + text,
+        .minimap-container svg rect[fill*="blue"] + text {
+            fill: #fff !important;
+            stroke: rgba(0, 0, 0, 0.3) !important;
+            stroke-width: 1px !important;
+            paint-order: stroke fill !important;
+        }
+
+        .mini-mindmap svg text {
+            font-family: Arial, "Microsoft JhengHei", sans-serif !important;
+            font-size: 8px !important;
+            font-weight: bold !important;
+            fill: #333 !important;
+        }
+
+        .minimap-container,
+        .mini-mindmap {
+            overflow: visible !important;
+        }
+
+        .minimap-container svg,
+        .mini-mindmap svg {
+            overflow: visible !important;
+        }
+
+        .minimap-content-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .minimap-svg-container {
+            position: absolute;
+            transform-origin: left top;
+            width: 100%;
+            height: 100%;
+        }
+
+        .minimap-viewport {
+            position: absolute;
+            border: 2px solid #2196f3;
+            background: rgba(33, 150, 243, 0.1);
+            transition: all 0.3s ease;
+            cursor: move;
+        }
+
+        .minimap-viewport.no-transition {
+            transition: none;
+        }
         
-        /* SimpleMindMap 小地圖樣式 */
         .minimap-container .smm-minimap {
             width: 100% !important;
             height: 100% !important;
@@ -894,7 +940,6 @@
             <!-- 導航標籤 -->
             <div class="nav-tabs" id="navTabs">
                 <div class="nav-tab active" data-tab="home" onclick="switchTab('home')">Home</div>
-                <!-- 動態標籤會在這裡新增 -->
             </div>
 
             <!-- 內容區域 -->
@@ -973,6 +1018,9 @@
                                     <button class="toolbar-btn" onclick="addSiblingNode()">
                                         <span>➕</span> 同級節點
                                     </button>
+                                    <button class="toolbar-btn work-hours-btn" onclick="addWorkHoursNode()">
+                                        <span>⏰</span> 工時節點
+                                    </button>
                                     <button class="toolbar-btn" onclick="deleteNode()">
                                         <span>🗑️</span> 刪除
                                     </button>
@@ -1029,12 +1077,9 @@
                             </div>
                             <div id="mindMapContent" style="width: 100%; height: 100%;"></div>
                             <div class="minimap-container" id="minimapContainer" style="display: none;">
-                                <!-- 小地圖內容容器 -->
                                 <div class="minimap-content-wrapper">
-                                <!-- 小地圖SVG內容會渲染到這裡 -->
-                                <div class="minimap-svg-container" id="miniMapSvgContainer"></div>
-                                <!-- 視口框 -->
-                                <div class="minimap-viewport" id="miniMapViewBox"></div>
+                                    <div class="minimap-svg-container" id="miniMapSvgContainer"></div>
+                                    <div class="minimap-viewport" id="miniMapViewBox"></div>
                                 </div>
                             </div>
                         </div>
@@ -1110,7 +1155,6 @@
                     <label>任務負責人</label>
                     <select id="subTaskAssignee">
                         <option value="">請選擇負責人</option>
-                        <!-- 選項會從 mock 資料動態載入 -->
                     </select>
                 </div>
                 <div class="form-group">
@@ -1120,7 +1164,6 @@
                 <div class="form-group">
                     <label>任務狀態</label>
                     <select id="subTaskStatus">
-                        <!-- 選項會從 mock 資料動態載入 -->
                     </select>
                 </div>
                 <div class="form-actions">
@@ -1148,61 +1191,98 @@
         </div>
     </div>
 
-    <!-- 核心與插件 -->
-<link rel="stylesheet" href="https://unpkg.com/simple-mind-map@latest/dist/simpleMindMap.esm.css">
+    <!-- 工時節點模態框 -->
+    <div id="workHoursModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>⏰</span>
+                <span id="workHoursModalTitle">新增工時節點</span>
+            </div>
+            <div class="modal-body">
+                <div class="work-hours-form">
+                    <div class="form-group">
+                        <label>任務名稱</label>
+                        <input type="text" id="workHoursTaskName" placeholder="請輸入工時任務名稱">
+                    </div>
+                    <div class="form-group">
+                        <label>負責人</label>
+                        <select id="workHoursAssignee">
+                            <option value="">請選擇負責人</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>開始日期</label>
+                        <input type="date" id="workHoursStartDate">
+                    </div>
+                    <div class="form-group">
+                        <label>結束日期</label>
+                        <input type="date" id="workHoursEndDate">
+                    </div>
+                    <div class="form-group">
+                        <label>預估工時（小時）</label>
+                        <input type="number" id="workHoursEstimated" placeholder="預估工時" min="0" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>實際工時（小時）</label>
+                        <input type="number" id="workHoursActual" placeholder="實際工時" min="0" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>工時狀態</label>
+                        <select id="workHoursStatus">
+                            <option value="not-started">未開始</option>
+                            <option value="in-progress">進行中</option>
+                            <option value="completed">已完成</option>
+                            <option value="overtime">超時</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>優先度</label>
+                        <select id="workHoursPriority">
+                            <option value="low">低</option>
+                            <option value="medium">中</option>
+                            <option value="high">高</option>
+                            <option value="urgent">緊急</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>工時備註</label>
+                        <textarea id="workHoursNote" placeholder="請輸入工時相關備註..." rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('workHoursModal')">取消</button>
+                    <button class="btn btn-warning" id="workHoursEditBtn" onclick="updateWorkHours()" style="display: none;">更新</button>
+                    <button class="btn btn-danger" id="workHoursDeleteBtn" onclick="confirmDeleteWorkHours()" style="display: none;">刪除</button>
+                    <button class="btn btn-primary" id="workHoursAddBtn" onclick="addWorkHours()">新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- 核心庫 -->
-<script src="https://unpkg.com/simple-mind-map@latest/dist/simpleMindMap.umd.min.js"></script>
+    <!-- 確認刪除工時節點模態框 -->
+    <div id="confirmDeleteWorkHoursModal" class="modal confirm-modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="confirm-icon">⚠️</div>
+                <div class="confirm-message">確認刪除工時節點</div>
+                <div class="confirm-submessage">此操作無法復原，確定要刪除這個工時節點嗎？</div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('confirmDeleteWorkHoursModal')">取消</button>
+                    <button class="btn btn-danger" onclick="deleteWorkHoursConfirmed()">確認刪除</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- 插件 -->
-<script src="https://unpkg.com/simple-mind-map@latest/dist/MiniMap.umd.min.js"></script>
-<script src="https://unpkg.com/simple-mind-map@latest/dist/Select.umd.min.js"></script>
-<script src="https://unpkg.com/simple-mind-map@latest/dist/Drag.umd.min.js"></script>
-<script src="https://unpkg.com/simple-mind-map@latest/dist/Export.umd.min.js"></script>
-<script>
-  window.addEventListener('load', () => {
-    console.log('SimpleMindMap:', window.SimpleMindMap);
-    console.log('MiniMap:', window.MiniMap);
-    console.log('Select:', window.Select);
-    console.log('Drag:', window.Drag);
-    console.log('Export:', window.Export);
+    <!-- SimpleMindMap 庫 -->
+    <link rel="stylesheet" href="https://unpkg.com/simple-mind-map@latest/dist/simpleMindMap.esm.css">
+    <script src="https://unpkg.com/simple-mind-map@latest/dist/simpleMindMap.umd.min.js"></script>
+    <script src="https://unpkg.com/simple-mind-map@latest/dist/MiniMap.umd.min.js"></script>
+    <script src="https://unpkg.com/simple-mind-map@latest/dist/Select.umd.min.js"></script>
+    <script src="https://unpkg.com/simple-mind-map@latest/dist/Drag.umd.min.js"></script>
+    <script src="https://unpkg.com/simple-mind-map@latest/dist/Export.umd.min.js"></script>
 
-    if (!(window.SimpleMindMap && window.SimpleMindMap.default)) {
-      console.error('SimpleMindMap 未載入');
-      return;
-    }
-
-    const MindMap = window.SimpleMindMap.default;
-
-    // 插件收集
-    const plugins = [];
-    if (window.MiniMap?.default) plugins.push(window.MiniMap.default);
-    if (window.Select?.default) plugins.push(window.Select.default);
-    if (window.Drag?.default) plugins.push(window.Drag.default);
-    if (window.Export?.default) plugins.push(window.Export.default);
-
-    console.log('註冊插件：', plugins);
-
-    // 初始化心智圖範例
-    const mindMap = new MindMap({
-      el: document.getElementById('mindmap-container'),
-      data: {
-        nodeData: {
-          text: '中心主題',
-          children: [
-            { text: '分支1' },
-            { text: '分支2' }
-          ]
-        }
-      },
-      plugins: plugins
-    });
-
-    console.log('心智圖初始化完成', mindMap);
-  });
-</script>
-
-  <script>
+    <script>
         // 全域變數
         let SimpleMindMap = null;
         let MiniMap = null;
@@ -1218,6 +1298,7 @@
         let editingTaskId = null;
         let editingSubTaskId = null;
         let editingNodeData = null;
+        let editingWorkHoursId = null;
         let mindMapInstance = null;
         let currentTheme = 'default';
         let isEditMode = false;
@@ -1229,44 +1310,118 @@
         let miniMapContainer = null;
         let viewBoxContainer = null;
 
-        // API 配置
-        const API_BASE_URL = './projects-mock-data.json';
+        // Mock 資料初始化
+        function initializeMockData() {
+            topTasks = [
+                {
+                    id: 1,
+                    name: "提升銷售業績",
+                    description: "透過多重策略提升整體銷售業績",
+                    budget: 50,
+                    owner: "張經理",
+                    subTasks: [
+                        {
+                            id: 101,
+                            name: "市場調研",
+                            assignee: "張三",
+                            hours: 40,
+                            status: "completed",
+                            children: [],
+                            workHours: [
+                                {
+                                    id: 1001,
+                                    taskName: "競爭對手分析",
+                                    assignee: "張三",
+                                    startDate: "2024-01-15",
+                                    endDate: "2024-01-20",
+                                    estimatedHours: 20,
+                                    actualHours: 18,
+                                    status: "completed",
+                                    priority: "high",
+                                    note: "完成主要競爭對手的產品分析"
+                                }
+                            ]
+                        },
+                        {
+                            id: 102,
+                            name: "產品推廣",
+                            assignee: "李四",
+                            hours: 30,
+                            status: "in-progress",
+                            children: [],
+                            workHours: [
+                                {
+                                    id: 1002,
+                                    taskName: "社群媒體行銷",
+                                    assignee: "李四",
+                                    startDate: "2024-01-22",
+                                    endDate: "2024-01-30",
+                                    estimatedHours: 15,
+                                    actualHours: 10,
+                                    status: "in-progress",
+                                    priority: "medium",
+                                    note: "Facebook 和 Instagram 廣告投放"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "數據分析系統",
+                    description: "建立完整的數據分析平台",
+                    budget: 80,
+                    owner: "王總監",
+                    subTasks: [
+                        {
+                            id: 201,
+                            name: "需求分析",
+                            assignee: "王五",
+                            hours: 25,
+                            status: "pending",
+                            children: [],
+                            workHours: []
+                        }
+                    ]
+                }
+            ];
+
+            assignees = [
+                { name: "張三", department: "產品部" },
+                { name: "李四", department: "數據分析部" },
+                { name: "王五", department: "策略規劃部" },
+                { name: "趙六", department: "技術部" },
+                { name: "錢七", department: "行銷部" },
+                { name: "孫八", department: "營運部" }
+            ];
+
+            taskStatuses = [
+                { value: "pending", label: "待開始" },
+                { value: "in-progress", label: "進行中" },
+                { value: "completed", label: "已完成" },
+                { value: "on-hold", label: "暫停" }
+            ];
+        }
 
         // 載入 Mock 資料
         async function loadMockData() {
             try {
-                console.log('🔍 正在 fetch：', API_BASE_URL);
-                const response = await fetch(API_BASE_URL);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                // 嘗試載入外部資料，失敗則使用內建資料
+                const response = await fetch('./projects-mock-data.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    topTasks = data.projects || [];
+                    assignees = data.assignees || [];
+                    taskStatuses = data.taskStatuses || [];
+                } else {
+                    throw new Error('外部資料載入失敗');
                 }
-                
-                const data = await response.json();
-                console.log('✅ JSON 資料:', data);
-                
-                topTasks = data.projects || [];
-                assignees = data.assignees || [];
-                taskStatuses = data.taskStatuses || [];
-                initializeUI();
             } catch (error) {
-                console.error('❌ 載入資料失敗:', error);
-                // 直接初始化空資料
-                topTasks = [];
-                assignees = [
-                    { name: "張三", department: "產品部" },
-                    { name: "李四", department: "數據分析部" },
-                    { name: "王五", department: "策略規劃部" },
-                    { name: "趙六", department: "技術部" }
-                ];
-                taskStatuses = [
-                    { value: "pending", label: "待開始" },
-                    { value: "in-progress", label: "進行中" },
-                    { value: "completed", label: "已完成" },
-                    { value: "on-hold", label: "暫停" }
-                ];
-                initializeUI();
+                console.log('使用內建 Mock 資料');
+                initializeMockData();
             }
+            
+            initializeUI();
         }
 
         // 初始化 UI
@@ -1292,28 +1447,24 @@
                     const MiniMapPlugin = window.MiniMap.default || window.MiniMap;
                     plugins.push(MiniMapPlugin);
                     MiniMap = MiniMapPlugin;
-                    console.log('✅ MiniMap 插件準備註冊');
                 }
                 
                 if (window.Select) {
                     const SelectPlugin = window.Select.default || window.Select;
                     plugins.push(SelectPlugin);
                     Select = SelectPlugin;
-                    console.log('✅ Select 插件準備註冊');
                 }
                 
                 if (window.Drag) {
                     const DragPlugin = window.Drag.default || window.Drag;
                     plugins.push(DragPlugin);
                     Drag = DragPlugin;
-                    console.log('✅ Drag 插件準備註冊');
                 }
                 
                 if (window.Export) {
                     const ExportPlugin = window.Export.default || window.Export;
                     plugins.push(ExportPlugin);
                     Export = ExportPlugin;
-                    console.log('✅ Export 插件準備註冊');
                 }
                 
                 // 註冊所有插件
@@ -1325,16 +1476,378 @@
                         console.error('❌ 插件註冊失敗:', error);
                     }
                 }
-            } else {
-                console.error('❌ SimpleMindMap 未載入');
             }
             
             populateAssigneeOptions();
             populateStatusOptions();
+            populateWorkHoursAssigneeOptions();
             renderTopTasks();
             renderDashboard();
             switchTab('home');
             currentTopTaskId = null;
+        }
+
+        // 填充負責人選項
+        function populateAssigneeOptions() {
+            const select = document.getElementById('subTaskAssignee');
+            select.innerHTML = '<option value="">請選擇負責人</option>';
+            
+            assignees.forEach(assignee => {
+                const option = document.createElement('option');
+                option.value = assignee.name;
+                option.textContent = `${assignee.name} (${assignee.department})`;
+                select.appendChild(option);
+            });
+        }
+
+        function populateWorkHoursAssigneeOptions() {
+            const select = document.getElementById('workHoursAssignee');
+            select.innerHTML = '<option value="">請選擇負責人</option>';
+            
+            assignees.forEach(assignee => {
+                const option = document.createElement('option');
+                option.value = assignee.name;
+                option.textContent = `${assignee.name} (${assignee.department})`;
+                select.appendChild(option);
+            });
+        }
+
+        function populateStatusOptions() {
+            const select = document.getElementById('subTaskStatus');
+            select.innerHTML = '';
+            
+            taskStatuses.forEach(status => {
+                const option = document.createElement('option');
+                option.value = status.value;
+                option.textContent = status.label;
+                select.appendChild(option);
+            });
+            
+            select.value = 'pending';
+        }
+
+        // 工時節點相關功能
+        function addWorkHoursNode() {
+            if (!mindMapInstance || !isEditMode) {
+                alert('請先進入編輯模式');
+                return;
+            }
+            
+            if (!mindMapInstance.renderer || mindMapInstance.renderer.activeNodeList.length === 0) {
+                alert('請先選擇一個節點作為父節點');
+                return;
+            }
+            
+            editingWorkHoursId = null;
+            editingNodeData = null;
+            
+            // 重置表單
+            document.getElementById('workHoursModalTitle').textContent = '新增工時節點';
+            document.getElementById('workHoursAddBtn').style.display = 'inline-block';
+            document.getElementById('workHoursEditBtn').style.display = 'none';
+            document.getElementById('workHoursDeleteBtn').style.display = 'none';
+            
+            document.getElementById('workHoursTaskName').value = '';
+            document.getElementById('workHoursAssignee').value = '';
+            document.getElementById('workHoursStartDate').value = '';
+            document.getElementById('workHoursEndDate').value = '';
+            document.getElementById('workHoursEstimated').value = '';
+            document.getElementById('workHoursActual').value = '';
+            document.getElementById('workHoursStatus').value = 'not-started';
+            document.getElementById('workHoursPriority').value = 'medium';
+            document.getElementById('workHoursNote').value = '';
+            
+            // 設置默認日期
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('workHoursStartDate').value = today;
+            
+            document.getElementById('workHoursModal').style.display = 'block';
+        }
+
+        function addWorkHours() {
+            const taskName = document.getElementById('workHoursTaskName').value.trim();
+            const assignee = document.getElementById('workHoursAssignee').value;
+            const startDate = document.getElementById('workHoursStartDate').value;
+            const endDate = document.getElementById('workHoursEndDate').value;
+            const estimatedHours = parseFloat(document.getElementById('workHoursEstimated').value) || 0;
+            const actualHours = parseFloat(document.getElementById('workHoursActual').value) || 0;
+            const status = document.getElementById('workHoursStatus').value;
+            const priority = document.getElementById('workHoursPriority').value;
+            const note = document.getElementById('workHoursNote').value.trim();
+
+            if (!taskName) {
+                alert('請輸入任務名稱');
+                return;
+            }
+
+            if (!assignee) {
+                alert('請選擇負責人');
+                return;
+            }
+
+            if (!startDate) {
+                alert('請選擇開始日期');
+                return;
+            }
+
+            // 創建工時節點的顯示文字
+            let displayText = `⏰ ${taskName}`;
+            
+            // 創建詳細備註
+            const workHoursNote = [
+                `負責人: ${assignee}`,
+                `開始日期: ${startDate}`,
+                `結束日期: ${endDate || '待定'}`,
+                `預估工時: ${estimatedHours}小時`,
+                `實際工時: ${actualHours}小時`,
+                `狀態: ${getWorkHoursStatusLabel(status)}`,
+                `優先度: ${getPriorityLabel(priority)}`,
+                note ? `備註: ${note}` : ''
+            ].filter(Boolean).join('\n');
+
+            // 在心智圖中添加節點
+            const activeNode = mindMapInstance.renderer.activeNodeList[0];
+            mindMapInstance.execCommand('INSERT_CHILD_NODE', false, [], {
+                data: {
+                    text: displayText,
+                    expand: true,
+                    note: workHoursNote,
+                    backgroundColor: getWorkHoursStatusColor(status),
+                    borderColor: getWorkHoursStatusBorderColor(status),
+                    fontSize: 13,
+                    color: '#fff',
+                    borderWidth: 2,
+                    borderRadius: 5,
+                    isWorkHours: true,
+                    workHoursData: {
+                        taskName,
+                        assignee,
+                        startDate,
+                        endDate,
+                        estimatedHours,
+                        actualHours,
+                        status,
+                        priority,
+                        note
+                    }
+                }
+            });
+
+            // 同步數據到原始資料結構
+            setTimeout(() => {
+                syncMindMapChangesToData();
+            }, 200);
+
+            closeModal('workHoursModal');
+        }
+
+        function editWorkHoursNode(node) {
+            if (!node || !node.nodeData) return;
+            
+            const nodeData = node.nodeData.data;
+            if (!nodeData.isWorkHours) return;
+            
+            editingNodeData = node;
+            
+            // 從備註中解析數據
+            const noteLines = (nodeData.note || '').split('\n');
+            let assignee = '';
+            let startDate = '';
+            let endDate = '';
+            let estimatedHours = 0;
+            let actualHours = 0;
+            let status = 'not-started';
+            let priority = 'medium';
+            let note = '';
+            
+            noteLines.forEach(line => {
+                if (line.includes('負責人:')) {
+                    assignee = line.replace('負責人:', '').trim();
+                } else if (line.includes('開始日期:')) {
+                    startDate = line.replace('開始日期:', '').trim();
+                } else if (line.includes('結束日期:')) {
+                    endDate = line.replace('結束日期:', '').trim();
+                    if (endDate === '待定') endDate = '';
+                } else if (line.includes('預估工時:')) {
+                    estimatedHours = parseFloat(line.replace('預估工時:', '').replace('小時', '').trim()) || 0;
+                } else if (line.includes('實際工時:')) {
+                    actualHours = parseFloat(line.replace('實際工時:', '').replace('小時', '').trim()) || 0;
+                } else if (line.includes('狀態:')) {
+                    const statusLabel = line.replace('狀態:', '').trim();
+                    status = getWorkHoursStatusValue(statusLabel);
+                } else if (line.includes('優先度:')) {
+                    const priorityLabel = line.replace('優先度:', '').trim();
+                    priority = getPriorityValue(priorityLabel);
+                } else if (line.includes('備註:')) {
+                    note = line.replace('備註:', '').trim();
+                }
+            });
+            
+            // 填充表單
+            document.getElementById('workHoursModalTitle').textContent = '編輯工時節點';
+            document.getElementById('workHoursAddBtn').style.display = 'none';
+            document.getElementById('workHoursEditBtn').style.display = 'inline-block';
+            document.getElementById('workHoursDeleteBtn').style.display = 'inline-block';
+            
+            // 從節點文字中提取任務名稱
+            const taskName = nodeData.text.replace('⏰ ', '');
+            document.getElementById('workHoursTaskName').value = taskName;
+            document.getElementById('workHoursAssignee').value = assignee;
+            document.getElementById('workHoursStartDate').value = startDate;
+            document.getElementById('workHoursEndDate').value = endDate;
+            document.getElementById('workHoursEstimated').value = estimatedHours;
+            document.getElementById('workHoursActual').value = actualHours;
+            document.getElementById('workHoursStatus').value = status;
+            document.getElementById('workHoursPriority').value = priority;
+            document.getElementById('workHoursNote').value = note;
+            
+            document.getElementById('workHoursModal').style.display = 'block';
+        }
+
+        function updateWorkHours() {
+            if (!editingNodeData) return;
+
+            const taskName = document.getElementById('workHoursTaskName').value.trim();
+            const assignee = document.getElementById('workHoursAssignee').value;
+            const startDate = document.getElementById('workHoursStartDate').value;
+            const endDate = document.getElementById('workHoursEndDate').value;
+            const estimatedHours = parseFloat(document.getElementById('workHoursEstimated').value) || 0;
+            const actualHours = parseFloat(document.getElementById('workHoursActual').value) || 0;
+            const status = document.getElementById('workHoursStatus').value;
+            const priority = document.getElementById('workHoursPriority').value;
+            const note = document.getElementById('workHoursNote').value.trim();
+
+            if (!taskName) {
+                alert('請輸入任務名稱');
+                return;
+            }
+
+            if (!assignee) {
+                alert('請選擇負責人');
+                return;
+            }
+
+            // 更新節點文字和樣式
+            const displayText = `⏰ ${taskName}`;
+            const workHoursNote = [
+                `負責人: ${assignee}`,
+                `開始日期: ${startDate}`,
+                `結束日期: ${endDate || '待定'}`,
+                `預估工時: ${estimatedHours}小時`,
+                `實際工時: ${actualHours}小時`,
+                `狀態: ${getWorkHoursStatusLabel(status)}`,
+                `優先度: ${getPriorityLabel(priority)}`,
+                note ? `備註: ${note}` : ''
+            ].filter(Boolean).join('\n');
+
+            mindMapInstance.execCommand('SET_NODE_TEXT', editingNodeData, displayText);
+            mindMapInstance.execCommand('SET_NODE_NOTE', editingNodeData, workHoursNote);
+            mindMapInstance.execCommand('SET_NODE_STYLE', editingNodeData, {
+                backgroundColor: getWorkHoursStatusColor(status),
+                borderColor: getWorkHoursStatusBorderColor(status),
+                fontSize: 13,
+                color: '#fff',
+                borderWidth: 2,
+                borderRadius: 5
+            });
+
+            // 更新節點的工時數據
+            editingNodeData.nodeData.data.workHoursData = {
+                taskName,
+                assignee,
+                startDate,
+                endDate,
+                estimatedHours,
+                actualHours,
+                status,
+                priority,
+                note
+            };
+
+            setTimeout(() => {
+                syncMindMapChangesToData();
+            }, 200);
+
+            closeModal('workHoursModal');
+            editingNodeData = null;
+        }
+
+        function confirmDeleteWorkHours() {
+            document.getElementById('workHoursModal').style.display = 'none';
+            document.getElementById('confirmDeleteWorkHoursModal').style.display = 'block';
+        }
+
+        function deleteWorkHoursConfirmed() {
+            if (editingNodeData) {
+                mindMapInstance.execCommand('REMOVE_NODE', editingNodeData);
+                setTimeout(() => {
+                    syncMindMapChangesToData();
+                }, 200);
+            }
+            
+            closeModal('confirmDeleteWorkHoursModal');
+            editingNodeData = null;
+        }
+
+        // 工時狀態相關函數
+        function getWorkHoursStatusLabel(status) {
+            const statusMap = {
+                'not-started': '未開始',
+                'in-progress': '進行中',
+                'completed': '已完成',
+                'overtime': '超時'
+            };
+            return statusMap[status] || status;
+        }
+
+        function getWorkHoursStatusValue(label) {
+            const valueMap = {
+                '未開始': 'not-started',
+                '進行中': 'in-progress',
+                '已完成': 'completed',
+                '超時': 'overtime'
+            };
+            return valueMap[label] || 'not-started';
+        }
+
+        function getWorkHoursStatusColor(status) {
+            const colorMap = {
+                'not-started': '#6c757d',
+                'in-progress': '#fd7e14',
+                'completed': '#198754',
+                'overtime': '#dc3545'
+            };
+            return colorMap[status] || '#6c757d';
+        }
+
+        function getWorkHoursStatusBorderColor(status) {
+            const colorMap = {
+                'not-started': '#5a6268',
+                'in-progress': '#e55a00',
+                'completed': '#146c43',
+                'overtime': '#b02a37'
+            };
+            return colorMap[status] || '#5a6268';
+        }
+
+        function getPriorityLabel(priority) {
+            const priorityMap = {
+                'low': '低',
+                'medium': '中',
+                'high': '高',
+                'urgent': '緊急'
+            };
+            return priorityMap[priority] || priority;
+        }
+
+        function getPriorityValue(label) {
+            const valueMap = {
+                '低': 'low',
+                '中': 'medium',
+                '高': 'high',
+                '緊急': 'urgent'
+            };
+            return valueMap[label] || 'medium';
         }
 
         // 搜尋功能
@@ -1394,6 +1907,20 @@
                 const totalTasks = allSubTasks.length;
                 const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
                 const totalHours = allSubTasks.reduce((sum, st) => sum + (st.hours || 0), 0);
+                
+                // 計算工時統計
+                let totalWorkHours = 0;
+                let completedWorkHours = 0;
+                allSubTasks.forEach(subTask => {
+                    if (subTask.workHours && Array.isArray(subTask.workHours)) {
+                        subTask.workHours.forEach(wh => {
+                            totalWorkHours += wh.estimatedHours || 0;
+                            if (wh.status === 'completed') {
+                                completedWorkHours += wh.actualHours || 0;
+                            }
+                        });
+                    }
+                });
 
                 const cardDiv = document.createElement('div');
                 cardDiv.className = 'dashboard-card';
@@ -1412,6 +1939,7 @@
                         <div><strong>經費預算：</strong>${task.budget || 0}萬元</div>
                         <div><strong>完成進度：</strong>${progress}% (${completedTasks}/${totalTasks})</div>
                         <div><strong>總預估工時：</strong>${totalHours}小時</div>
+                        <div><strong>工時統計：</strong>預估 ${totalWorkHours}h / 完成 ${completedWorkHours}h</div>
                     </div>
                     <button class="detail-btn" onclick="selectTopTask(${task.id})">詳細資料</button>
                 `;
@@ -1744,7 +2272,12 @@
 
             mindMapInstance.on('node_dblclick', (node) => {
                 if (isEditMode && node.nodeData.data.isRoot !== true) {
-                    editNodeTask(node);
+                    // 檢查是否為工時節點
+                    if (node.nodeData.data.isWorkHours) {
+                        editWorkHoursNode(node);
+                    } else {
+                        editNodeTask(node);
+                    }
                 }
             });
 
@@ -1904,6 +2437,7 @@
                 if (node && node.data && node.data.text) {
                     let cleanText = node.data.text;
                     cleanText = cleanText.replace(/<[^>]*>/g, '');
+                    cleanText = cleanText.replace(/^⏰\s*/, ''); // 移除工時圖標
                     cleanText = cleanText.trim();
                     texts.push(cleanText);
                 }
@@ -1974,10 +2508,11 @@
                     return [];
                 }
                 
-                return subTasks.map(subTask => {
+                return subTasks.flatMap(subTask => {
                     const children = subTask.children ? convertSubTasks(subTask.children) : [];
                     
-                    return {
+                    // 主要子任務節點
+                    const mainNode = {
                         data: {
                             text: subTask.name || '未命名任務',
                             expand: true,
@@ -1992,6 +2527,46 @@
                         children: children,
                         uid: subTask.id || Date.now() + Math.random()
                     };
+
+                    // 工時節點
+                    const workHoursNodes = [];
+                    if (subTask.workHours && Array.isArray(subTask.workHours)) {
+                        subTask.workHours.forEach(wh => {
+                            const workHoursNote = [
+                                `負責人: ${wh.assignee}`,
+                                `開始日期: ${wh.startDate}`,
+                                `結束日期: ${wh.endDate || '待定'}`,
+                                `預估工時: ${wh.estimatedHours}小時`,
+                                `實際工時: ${wh.actualHours}小時`,
+                                `狀態: ${getWorkHoursStatusLabel(wh.status)}`,
+                                `優先度: ${getPriorityLabel(wh.priority)}`,
+                                wh.note ? `備註: ${wh.note}` : ''
+                            ].filter(Boolean).join('\n');
+
+                            workHoursNodes.push({
+                                data: {
+                                    text: `⏰ ${wh.taskName}`,
+                                    expand: true,
+                                    note: workHoursNote,
+                                    backgroundColor: getWorkHoursStatusColor(wh.status),
+                                    borderColor: getWorkHoursStatusBorderColor(wh.status),
+                                    fontSize: 13,
+                                    color: '#fff',
+                                    borderWidth: 2,
+                                    borderRadius: 5,
+                                    isWorkHours: true,
+                                    workHoursData: wh
+                                },
+                                children: [],
+                                uid: wh.id || Date.now() + Math.random()
+                            });
+                        });
+                    }
+
+                    // 將工時節點添加到主節點的子節點中
+                    mainNode.children = [...children, ...workHoursNodes];
+
+                    return [mainNode];
                 });
             }
 
@@ -2220,32 +2795,6 @@
         }
 
         // UI 基礎功能
-        function populateAssigneeOptions() {
-            const select = document.getElementById('subTaskAssignee');
-            select.innerHTML = '<option value="">請選擇負責人</option>';
-            
-            assignees.forEach(assignee => {
-                const option = document.createElement('option');
-                option.value = assignee.name;
-                option.textContent = `${assignee.name} (${assignee.department})`;
-                select.appendChild(option);
-            });
-        }
-
-        function populateStatusOptions() {
-            const select = document.getElementById('subTaskStatus');
-            select.innerHTML = '';
-            
-            taskStatuses.forEach(status => {
-                const option = document.createElement('option');
-                option.value = status.value;
-                option.textContent = status.label;
-                select.appendChild(option);
-            });
-            
-            select.value = 'pending';
-        }
-
         function getStatusClass(status) {
             return `status-${status}`;
         }
@@ -2422,12 +2971,25 @@
                 const statusLabel = getStatusLabel(subTask.status);
                 const statusClass = getStatusClass(subTask.status);
                 
+                // 計算工時統計
+                let totalWorkHours = 0;
+                let completedWorkHours = 0;
+                if (subTask.workHours && Array.isArray(subTask.workHours)) {
+                    subTask.workHours.forEach(wh => {
+                        totalWorkHours += wh.estimatedHours || 0;
+                        if (wh.status === 'completed') {
+                            completedWorkHours += wh.actualHours || 0;
+                        }
+                    });
+                }
+                
                 const subTaskHTML = `
                     <div class="subtask-item" style="margin-left: ${level * 20}px;">
                         <div class="subtask-info">
                             <div class="subtask-name">${subTask.name}</div>
                             <div class="subtask-assignee">負責人: ${subTask.assignee || '未指派'} | 預估工時: ${subTask.hours || 0}小時</div>
                             <div class="subtask-status ${statusClass}">${statusLabel}</div>
+                            ${totalWorkHours > 0 ? `<div style="font-size: 12px; color: #666; margin-top: 3px;">工時統計: 預估 ${totalWorkHours}h / 完成 ${completedWorkHours}h</div>` : ''}
                         </div>
                         <div class="subtask-actions">
                             <button class="action-btn" onclick="editSubTask(${subTask.id})">編輯</button>
@@ -2478,12 +3040,29 @@
                 const tasks = assigneeGroups[assignee];
                 const totalHours = tasks.reduce((sum, task) => sum + (task.hours || 0), 0);
                 const completedTasks = tasks.filter(task => task.status === 'completed').length;
+                
+                // 計算總工時統計
+                let totalWorkHours = 0;
+                let completedWorkHours = 0;
+                tasks.forEach(task => {
+                    if (task.workHours && Array.isArray(task.workHours)) {
+                        task.workHours.forEach(wh => {
+                            totalWorkHours += wh.estimatedHours || 0;
+                            if (wh.status === 'completed') {
+                                completedWorkHours += wh.actualHours || 0;
+                            }
+                        });
+                    }
+                });
 
                 const cardHTML = `
                     <div class="assignee-card">
                         <div class="assignee-name">${assignee}</div>
                         <div style="margin-bottom: 10px; color: #666; font-size: 14px;">
                             總工時：${totalHours}小時 | 完成：${completedTasks}/${tasks.length}
+                        </div>
+                        <div style="margin-bottom: 10px; color: #666; font-size: 12px;">
+                            工時統計：預估 ${totalWorkHours}h / 完成 ${completedWorkHours}h
                         </div>
                         ${tasks.map(task => {
                             const statusLabel = getStatusLabel(task.status);
@@ -2565,6 +3144,9 @@
                 editingTaskId = null;
             } else if (modalId === 'addSubTaskModal') {
                 editingSubTaskId = null;
+                editingNodeData = null;
+            } else if (modalId === 'workHoursModal') {
+                editingWorkHoursId = null;
                 editingNodeData = null;
             }
         }
@@ -2701,7 +3283,8 @@
                     assignee: assignee,
                     hours: hours,
                     status: status,
-                    children: []
+                    children: [],
+                    workHours: []
                 };
 
                 task.subTasks.push(newSubTask);
@@ -2936,6 +3519,11 @@
                     nodeData.children.forEach(child => {
                         const childData = child.data;
                         
+                        // 跳過工時節點，它們不應該成為主要子任務
+                        if (childData.isWorkHours) {
+                            return;
+                        }
+                        
                         const noteLines = (childData.note || '').split('\n');
                         let assignee = '';
                         let hours = 0;
@@ -2953,13 +3541,30 @@
                             }
                         });
                         
+                        // 提取工時節點
+                        const workHours = [];
+                        if (child.children) {
+                            child.children.forEach(grandchild => {
+                                if (grandchild.data.isWorkHours) {
+                                    const workHoursData = grandchild.data.workHoursData;
+                                    if (workHoursData) {
+                                        workHours.push({
+                                            id: grandchild.uid || Date.now() + Math.random(),
+                                            ...workHoursData
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                        
                         const subTask = {
                             id: child.uid || Date.now() + Math.random(),
                             name: childData.text.replace(/<[^>]*>/g, '').trim(),
                             assignee: assignee,
                             hours: hours,
                             status: status,
-                            children: convertFromMindMapData(child)
+                            children: convertFromMindMapData(child),
+                            workHours: workHours
                         };
                         
                         subTasks.push(subTask);
