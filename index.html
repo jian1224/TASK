@@ -503,7 +503,118 @@
     .stat-num { font-size: 2.2rem; }
   }
 
-  /* ─── SCROLL REVEAL ─────────────────────── */
+  /* ─── STEP INTERACTIVE ──────────────────── */
+  .step-btn {
+    display: inline-block; margin-top: 1rem;
+    background: var(--teal); color: var(--white);
+    border: none; border-radius: 8px;
+    padding: 0.55em 1.4em; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.15s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .step-btn:hover { background: var(--teal-light); transform: translateY(-1px); }
+  .step-btn:disabled { background: var(--gray-light); color: var(--gray-mid); cursor: default; transform: none; }
+  .step-btn.done { background: #4caf8a; }
+
+  .step-result-box {
+    margin-top: 1rem;
+    background: var(--teal-pale);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 10px 10px 0;
+    padding: 0.8rem 1rem;
+    font-size: 0.84rem; line-height: 1.7; color: #1a4a42;
+  }
+  .step-result-box.warn { background: #fdf3e3; border-left-color: var(--amber); color: #5a3010; }
+  .step-result-box.danger { background: #fdeaea; border-left-color: #e06b6b; color: #5a1010; }
+
+  /* ─── MODAL ──────────────────────────────── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(13,17,23,0.65);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .modal-box {
+    background: var(--white); border-radius: 20px;
+    width: 100%; max-width: 520px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.94) translateY(16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--cream);
+  }
+  .modal-header h3 { font-family: 'Noto Serif TC', serif; font-size: 1.1rem; }
+  .modal-close {
+    background: none; border: none; font-size: 1.1rem;
+    color: var(--gray-mid); cursor: pointer; padding: 4px 8px; border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: var(--cream); }
+  .modal-body { padding: 1.4rem 1.5rem; }
+
+  /* vision modal */
+  .eye-select-row { display: flex; gap: 8px; margin-bottom: 1rem; }
+  .eye-btn {
+    padding: 0.4em 1.4em; border-radius: 8px;
+    border: 2px solid var(--gray-light); background: transparent;
+    font-size: 0.85rem; font-family: 'Noto Sans TC', sans-serif;
+    cursor: pointer; transition: all 0.15s; color: var(--ink);
+  }
+  .eye-btn.active { border-color: var(--teal); background: var(--teal-pale); color: var(--teal); font-weight: 600; }
+  .vm-chart {
+    background: var(--ink); border-radius: 12px;
+    padding: 1rem; text-align: center; margin-bottom: 1rem;
+  }
+  .vm-row {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 4px 0; cursor: pointer; border-radius: 6px; transition: background 0.15s;
+  }
+  .vm-row:hover { background: rgba(255,255,255,0.08); }
+  .vm-row.selected { background: rgba(42,157,143,0.25); }
+  .vm-row.faded { opacity: 0.25; }
+  .vm-row span { color: white; font-weight: 600; }
+  .vm-ac { font-size: 10px !important; color: #8a9090 !important; width: 32px; text-align: right; font-weight: 400 !important; }
+  .vm-result-row {
+    display: flex; gap: 1rem; justify-content: center;
+  }
+  .vm-eye-result {
+    flex: 1; background: var(--cream); border-radius: 10px;
+    padding: 0.7rem; text-align: center;
+  }
+  .vm-eye-result span { display: block; font-size: 0.75rem; color: var(--gray-mid); margin-bottom: 4px; }
+  .vm-eye-result strong { font-size: 1.3rem; color: var(--teal); font-family: 'DM Serif Display', serif; }
+
+  /* pressure anim */
+  .puff-anim {
+    width: 80px; height: 80px; border-radius: 50%;
+    border: 2px solid var(--gray-light);
+    margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem; transition: all 0.3s;
+  }
+  .puff-anim.active { border-color: var(--teal); transform: scale(1.15); background: var(--teal-pale); }
+
+  /* game choice buttons */
+  .g-choice {
+    padding: 0.7em; border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: var(--paper); font-size: 0.85rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    cursor: pointer; transition: all 0.15s; text-align: center;
+  }
+  .g-choice:hover:not(:disabled) { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
+  .g-choice.correct { background: rgba(76,175,138,0.25); border-color: #4caf8a; color: #7de8b8; }
+  .g-choice.wrong { background: rgba(220,80,80,0.2); border-color: #e05555; color: #ff9a9a; }
+  .g-choice:disabled { cursor: not-allowed; }
+
+
   .reveal {
     opacity: 0; transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
@@ -673,59 +784,100 @@
   </div>
 
   <div class="steps-container">
+    <!-- Step 1: Vision -->
     <div class="step-row reveal">
       <div class="step-left">
         <div class="step-num">1</div>
         <div class="step-line"></div>
       </div>
-      <div class="step-content">
+      <div class="step-content" id="step1-card">
         <span class="step-tag">初步評估</span>
         <h3>視力檢查</h3>
-        <p>使用標準視力表（E字型或數字表），分別遮蓋單眼測量基礎視力，評估視力受損的程度。本院病患王先生右眼視力測量結果為 0.2，左眼為 0.6，已顯示右眼視力明顯下降。</p>
-        <span class="step-result">✓ 評估視力基準值，比較雙眼差異</span>
+        <p>使用標準視力表，分別遮蓋單眼測量基礎視力，評估視力受損程度。點選下方按鈕進行模擬視力測驗。</p>
+        <button class="step-btn" onclick="openVisionTest()">▶ 開始視力測驗</button>
+        <div id="vision-summary" class="step-result-box" style="display:none"></div>
       </div>
     </div>
 
+    <!-- Step 2: Pressure -->
     <div class="step-row reveal reveal-delay-1">
       <div class="step-left">
         <div class="step-num">2</div>
         <div class="step-line"></div>
       </div>
-      <div class="step-content">
+      <div class="step-content" id="step2-card">
         <span class="step-tag">眼壓測量</span>
         <h3>非接觸式眼壓檢查</h3>
-        <p>利用短暫氣流（非接觸式眼壓計）測量眼球內壓力，全程不接觸眼睛，安全無痛。正常眼壓範圍為 10–21 mmHg，主要用於排除青光眼等其他眼疾。</p>
-        <span class="step-result">✓ 正常範圍：10–21 mmHg（雙眼均正常）</span>
+        <p>利用短暫氣流測量眼球內壓力，全程不接觸眼睛，安全無痛。正常眼壓範圍 10–21 mmHg。</p>
+        <button class="step-btn" onclick="runPressure()">▶ 模擬眼壓測量</button>
+        <div id="pressure-summary" class="step-result-box" style="display:none"></div>
       </div>
     </div>
 
+    <!-- Step 3: Slit Lamp -->
     <div class="step-row reveal reveal-delay-2">
       <div class="step-left">
         <div class="step-num">3</div>
         <div class="step-line"></div>
       </div>
-      <div class="step-content">
+      <div class="step-content" id="step3-card">
         <span class="step-tag">關鍵診斷</span>
         <h3>裂隙燈顯微鏡檢查</h3>
-        <p>醫師透過高倍放大裂隙燈，直接觀察眼球各層結構，包括角膜、前房、虹膜及水晶體。此為確認白內障診斷的最重要檢查，可精確評估水晶體混濁的位置與程度。</p>
-        <span class="step-result">✓ 確認水晶體混濁程度及分類</span>
+        <p>醫師透過高倍放大裂隙燈直接觀察水晶體混濁程度，是確認白內障診斷最重要的檢查。</p>
+        <button class="step-btn" onclick="runSlitLamp()">▶ 模擬裂隙燈掃描</button>
+        <div id="slit-summary" class="step-result-box" style="display:none"></div>
       </div>
     </div>
 
+    <!-- Step 4: Final Diagnosis -->
     <div class="step-row reveal reveal-delay-3">
       <div class="step-left">
         <div class="step-num">4</div>
         <div class="step-line"></div>
       </div>
-      <div class="step-content">
+      <div class="step-content" id="step4-card">
         <span class="step-tag">醫師判斷</span>
         <h3>綜合診斷與分級</h3>
-        <p>醫師綜合問診病史（年齡、糖尿病、家族史）與上述三項檢查結果，判斷白內障嚴重程度，並制定個人化治療方案。白內障依混濁程度分為輕度、中度、重度三級。</p>
-        <span class="step-result">✓ 提供個人化治療建議</span>
+        <p>系統整合以上三項檢查結果，自動判斷白內障嚴重程度並給出治療建議。</p>
+        <button class="step-btn" onclick="runFinalDiag()">▶ 產生綜合診斷報告</button>
+        <div id="final-summary" class="step-result-box" style="display:none"></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- VISION MODAL -->
+<div id="vision-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeVision()">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>視力測驗</h3>
+      <button class="modal-close" onclick="closeVision()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="eye-select-row">
+        <button class="eye-btn active" id="vmbtn-right" onclick="vmSelectEye('right')">右眼</button>
+        <button class="eye-btn" id="vmbtn-left" onclick="vmSelectEye('left')">左眼</button>
+      </div>
+      <p style="font-size:0.82rem;color:var(--gray-mid);margin-bottom:1rem;">遮住另一眼，點選您能清楚辨識的最後一行。</p>
+      <div class="vm-chart" id="vm-chart">
+        <div class="vm-row" data-ac="0.05" onclick="vmClick(this)"><span class="vm-ac">0.05</span><span style="font-size:38px">E</span></div>
+        <div class="vm-row" data-ac="0.1"  onclick="vmClick(this)"><span class="vm-ac">0.1</span><span style="font-size:30px">F</span><span style="font-size:30px">P</span></div>
+        <div class="vm-row" data-ac="0.2"  onclick="vmClick(this)"><span class="vm-ac">0.2</span><span style="font-size:24px">T</span><span style="font-size:24px">O</span><span style="font-size:24px">Z</span></div>
+        <div class="vm-row" data-ac="0.3"  onclick="vmClick(this)"><span class="vm-ac">0.3</span><span style="font-size:20px">L</span><span style="font-size:20px">P</span><span style="font-size:20px">E</span><span style="font-size:20px">D</span></div>
+        <div class="vm-row" data-ac="0.4"  onclick="vmClick(this)"><span class="vm-ac">0.4</span><span style="font-size:16px">P</span><span style="font-size:16px">E</span><span style="font-size:16px">C</span><span style="font-size:16px">F</span><span style="font-size:16px">D</span></div>
+        <div class="vm-row" data-ac="0.5"  onclick="vmClick(this)"><span class="vm-ac">0.5</span><span style="font-size:14px">E</span><span style="font-size:14px">D</span><span style="font-size:14px">F</span><span style="font-size:14px">C</span><span style="font-size:14px">Z</span><span style="font-size:14px">P</span></div>
+        <div class="vm-row" data-ac="0.6"  onclick="vmClick(this)"><span class="vm-ac">0.6</span><span style="font-size:12px">F</span><span style="font-size:12px">E</span><span style="font-size:12px">L</span><span style="font-size:12px">O</span><span style="font-size:12px">P</span><span style="font-size:12px">Z</span><span style="font-size:12px">D</span></div>
+        <div class="vm-row" data-ac="0.8"  onclick="vmClick(this)"><span class="vm-ac">0.8</span><span style="font-size:10px">D</span><span style="font-size:10px">E</span><span style="font-size:10px">F</span><span style="font-size:10px">P</span><span style="font-size:10px">O</span><span style="font-size:10px">T</span><span style="font-size:10px">E</span><span style="font-size:10px">C</span></div>
+        <div class="vm-row" data-ac="1.0"  onclick="vmClick(this)"><span class="vm-ac">1.0</span><span style="font-size:9px">L</span><span style="font-size:9px">E</span><span style="font-size:9px">F</span><span style="font-size:9px">O</span><span style="font-size:9px">D</span><span style="font-size:9px">P</span><span style="font-size:9px">C</span><span style="font-size:9px">T</span></div>
+      </div>
+      <div class="vm-result-row">
+        <div class="vm-eye-result"><span>右眼</span><strong id="vm-right-val">—</strong></div>
+        <div class="vm-eye-result"><span>左眼</span><strong id="vm-left-val">—</strong></div>
+      </div>
+      <button class="step-btn" style="width:100%;margin-top:0.8rem" onclick="saveVision()">確認並儲存結果</button>
+    </div>
+  </div>
+</div>
 
 <!-- 3. TREATMENT -->
 <section id="treatment">
@@ -823,50 +975,36 @@
       </div>
     </div>
 
-    <!-- Game Training -->
-    <div class="ai-game reveal reveal-delay-2">
+    <!-- Game Training (real game) -->
+    <div class="ai-game reveal reveal-delay-2" id="game-area">
       <h3>🎮 遊戲化醫師培訓系統</h3>
-      <p style="font-size:0.83rem;color:#6a7a7a;line-height:1.7;margin-bottom:1.4rem;">醫學生透過模擬診斷闖關，提升眼科影像判讀能力，答對可獲得積分與成就徽章。</p>
-      <div class="game-levels">
-        <div class="game-level">
-          <span class="level-badge lv1">第一關</span>
-          <div class="level-info">
-            <h4>正常眼睛辨識</h4>
-            <p>認識健康水晶體的影像特徵</p>
-          </div>
-          <div class="level-score">+100</div>
-        </div>
-        <div class="game-level">
-          <span class="level-badge lv2">第二關</span>
-          <div class="level-info">
-            <h4>輕度白內障辨識</h4>
-            <p>判斷早期混濁徵象</p>
-          </div>
-          <div class="level-score">+200</div>
-        </div>
-        <div class="game-level">
-          <span class="level-badge lv3">第三關</span>
-          <div class="level-info">
-            <h4>中度白內障辨識</h4>
-            <p>評估混濁範圍與視力影響</p>
-          </div>
-          <div class="level-score">+300</div>
-        </div>
-        <div class="game-level">
-          <span class="level-badge lv4">第四關</span>
-          <div class="level-info">
-            <h4>重度白內障辨識</h4>
-            <p>掌握手術適應症判斷要點</p>
-          </div>
-          <div class="level-score">+500</div>
-        </div>
+      <p style="font-size:0.83rem;color:#6a7a7a;line-height:1.7;margin-bottom:1.2rem;">觀察眼部影像，判斷白內障程度。答對得分，3條命用完遊戲結束。</p>
+
+      <!-- scoreboard -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
+        <div style="font-size:0.82rem;color:#8a9090;">得分：<strong id="g-score" style="color:#ffd27a;font-size:1.1rem;">0</strong></div>
+        <div style="font-size:0.82rem;color:#8a9090;">關卡：<strong id="g-level" style="color:#e0e0e0;">1 / 8</strong></div>
+        <div id="g-lives" style="display:flex;gap:4px;font-size:1.1rem;"></div>
       </div>
-      <div class="severity-bar-wrap" style="margin-top:1.5rem;">
-        <h4 style="color:#5a6a6a;font-size:0.7rem;letter-spacing:0.12em;margin-bottom:0.6rem;">嚴重程度視覺化</h4>
-        <div class="severity-bar"></div>
-        <div class="severity-labels">
-          <span>正常</span><span>輕度</span><span>中度</span><span>重度</span>
-        </div>
+      <div style="height:5px;background:rgba(255,255,255,0.1);border-radius:100px;margin-bottom:1rem;overflow:hidden;">
+        <div id="g-progress" style="height:100%;background:#2a9d8f;border-radius:100px;transition:width 0.4s;width:12.5%"></div>
+      </div>
+
+      <!-- eye image -->
+      <div style="background:rgba(255,255,255,0.05);border-radius:16px;overflow:hidden;margin-bottom:1rem;height:180px;display:flex;align-items:center;justify-content:center;">
+        <canvas id="g-canvas" width="360" height="180"></canvas>
+      </div>
+
+      <!-- choices -->
+      <div id="g-choices" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:0.8rem;"></div>
+      <div id="g-feedback" style="min-height:36px;font-size:0.82rem;color:#8a9090;line-height:1.6;"></div>
+
+      <!-- game over -->
+      <div id="g-gameover" style="display:none;text-align:center;padding:1.5rem;background:rgba(255,255,255,0.06);border-radius:16px;">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;" id="go-emoji"></div>
+        <h4 id="go-title" style="color:var(--paper);margin-bottom:0.4rem;font-family:'Noto Serif TC',serif;"></h4>
+        <p id="go-desc" style="font-size:0.82rem;color:#8a9090;margin-bottom:1rem;"></p>
+        <button onclick="resetGame()" style="background:var(--teal);color:white;border:none;padding:0.6em 1.8em;border-radius:8px;font-size:0.88rem;cursor:pointer;">再玩一次</button>
       </div>
     </div>
   </div>
@@ -893,10 +1031,6 @@
     </div>
   </div>
   <p>若您或家人出現視力模糊、夜間眩光等症狀，請勿延誤就醫。定期眼科檢查是保護視力最有效的方法，白內障早期發現即可有效治療。</p>
-  <div class="hero-cta">
-    <a href="#" class="btn-primary">📅 立即預約掛號</a>
-    <a href="#" class="btn-outline">💬 線上諮詢</a>
-  </div>
 </section>
 
 <!-- FOOTER -->
@@ -906,15 +1040,343 @@
 </footer>
 
 <script>
-  // Scroll reveal
+  // ── Scroll reveal ──────────────────────────
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Shared diagnosis state ─────────────────
+  const diagState = { vision: null, pressure: null, slit: null };
+
+  // ══════════════════════════════════════════
+  // STEP 1 — Vision Test Modal
+  // ══════════════════════════════════════════
+  let vmEye = 'right';
+  const vmData = { right: null, left: null };
+
+  function openVisionTest() {
+    document.getElementById('vision-modal').style.display = 'flex';
+    vmEye = 'right';
+    vmData.right = null; vmData.left = null;
+    document.getElementById('vm-right-val').textContent = '—';
+    document.getElementById('vm-left-val').textContent = '—';
+    document.querySelectorAll('.vm-row').forEach(r => r.classList.remove('selected','faded'));
+  }
+  function closeVision() { document.getElementById('vision-modal').style.display = 'none'; }
+
+  function vmSelectEye(e) {
+    vmEye = e;
+    document.getElementById('vmbtn-right').classList.toggle('active', e === 'right');
+    document.getElementById('vmbtn-left').classList.toggle('active', e === 'left');
+    document.querySelectorAll('.vm-row').forEach(r => r.classList.remove('selected','faded'));
+  }
+
+  function vmClick(row) {
+    const ac = parseFloat(row.dataset.ac);
+    vmData[vmEye] = ac;
+    document.getElementById('vm-' + vmEye + '-val').textContent = ac.toFixed(2);
+    document.querySelectorAll('.vm-row').forEach(r => {
+      const rac = parseFloat(r.dataset.ac);
+      r.classList.toggle('selected', rac === ac);
+      r.classList.toggle('faded', rac > ac);
+      r.classList.remove(rac < ac ? 'faded' : '');
+      if (rac <= ac) r.classList.remove('faded');
+    });
+  }
+
+  function saveVision() {
+    if (!vmData.right && !vmData.left) { alert('請至少完成一眼的測試。'); return; }
+    diagState.vision = { ...vmData };
+    closeVision();
+
+    const rv = vmData.right, lv = vmData.left;
+    const worst = Math.min(rv ?? 1, lv ?? 1);
+    let cls = 'step-result-box', tag = '';
+    if (worst >= 0.8) { tag = '視力正常'; }
+    else if (worst >= 0.5) { tag = '輕度下降'; cls += ''; }
+    else if (worst >= 0.3) { tag = '中度下降'; cls += ' warn'; }
+    else { tag = '明顯下降'; cls += ' danger'; }
+
+    const box = document.getElementById('vision-summary');
+    box.className = cls;
+    box.innerHTML = `✓ 右眼：<strong>${rv ? rv.toFixed(2) : '未測'}</strong> ／ 左眼：<strong>${lv ? lv.toFixed(2) : '未測'}</strong>　→　${tag}`;
+    box.style.display = 'block';
+
+    const btn = document.querySelector('#step1-card .step-btn');
+    btn.textContent = '重新測驗'; btn.classList.add('done');
+  }
+
+  // ══════════════════════════════════════════
+  // STEP 2 — Eye Pressure
+  // ══════════════════════════════════════════
+  let puffRunning = false;
+  function runPressure() {
+    if (puffRunning) return;
+    puffRunning = true;
+    const btn = document.querySelector('#step2-card .step-btn');
+    btn.disabled = true; btn.textContent = '測量中…';
+
+    const msgs = ['請睜大眼睛…', '準備好了…', '噴氣！', '右眼完成，換左眼…', '噴氣！', '計算結果中…'];
+    let i = 0;
+    const tick = () => {
+      if (i >= msgs.length) { finishPressure(); return; }
+      btn.textContent = msgs[i++];
+      setTimeout(tick, i === 3 || i === 5 ? 900 : 650);
+    };
+    tick();
+  }
+
+  function finishPressure() {
+    const pr = Math.round(10 + Math.random() * 13);
+    const pl = Math.round(10 + Math.random() * 13);
+    diagState.pressure = { right: pr, left: pl };
+    puffRunning = false;
+
+    const abnormal = pr > 21 || pl > 21;
+    const box = document.getElementById('pressure-summary');
+    box.className = 'step-result-box' + (abnormal ? ' warn' : '');
+    box.innerHTML = `✓ 右眼：<strong>${pr} mmHg</strong> ／ 左眼：<strong>${pl} mmHg</strong>　→　${abnormal ? '⚠ 偏高，需進一步評估' : '雙眼正常範圍'}`;
+    box.style.display = 'block';
+
+    const btn = document.querySelector('#step2-card .step-btn');
+    btn.disabled = false; btn.textContent = '重新測量'; btn.classList.add('done');
+  }
+
+  // ══════════════════════════════════════════
+  // STEP 3 — Slit Lamp
+  // ══════════════════════════════════════════
+  const LAMP_GRADES = [
+    { grade: 'normal',   label: '正常',   score: 0, desc: '水晶體清澈透明，無混濁跡象。' },
+    { grade: 'mild',     label: '輕度混濁', score: 1, desc: '邊緣可見細小混濁點，核心仍透明，對日常視力影響有限。' },
+    { grade: 'moderate', label: '中度混濁', score: 2, desc: '核心出現明顯霧化，混濁面積達 30–60%，視力顯著受影響。' },
+    { grade: 'severe',   label: '重度混濁', score: 3, desc: '水晶體幾乎完全不透明，光線嚴重受阻（成熟白內障）。' },
+  ];
+  let lampRunning = false;
+  function runSlitLamp() {
+    if (lampRunning) return;
+    lampRunning = true;
+    const btn = document.querySelector('#step3-card .step-btn');
+    btn.disabled = true; btn.textContent = '掃描中…';
+    setTimeout(() => {
+      const result = LAMP_GRADES[Math.floor(Math.random() * 4)];
+      diagState.slit = result;
+      lampRunning = false;
+
+      const clsMap = { normal: '', mild: '', moderate: ' warn', severe: ' danger' };
+      const box = document.getElementById('slit-summary');
+      box.className = 'step-result-box' + clsMap[result.grade];
+      box.innerHTML = `✓ 水晶體狀態：<strong>${result.label}</strong><br>${result.desc}`;
+      box.style.display = 'block';
+
+      btn.disabled = false; btn.textContent = '重新掃描'; btn.classList.add('done');
+    }, 2200);
+  }
+
+  // ══════════════════════════════════════════
+  // STEP 4 — Final Diagnosis
+  // ══════════════════════════════════════════
+  function runFinalDiag() {
+    const box = document.getElementById('final-summary');
+    if (!diagState.vision && !diagState.pressure && !diagState.slit) {
+      box.className = 'step-result-box warn';
+      box.innerHTML = '⚠ 請先完成至少一項前面的檢查。';
+      box.style.display = 'block'; return;
+    }
+    let score = 0;
+
+    if (diagState.vision) {
+      const worst = Math.min(diagState.vision.right ?? 1, diagState.vision.left ?? 1);
+      if (worst < 0.3) score += 3;
+      else if (worst < 0.5) score += 2;
+      else if (worst < 0.8) score += 1;
+    }
+    if (diagState.slit) score += diagState.slit.score;
+    if (diagState.pressure && (diagState.pressure.right > 21 || diagState.pressure.left > 21)) score += 1;
+
+    let grade, cls, rec;
+    if (score <= 1) {
+      grade = '正常 / 無明顯白內障'; cls = '';
+      rec = '建議每 1–2 年定期追蹤眼科，養成護眼習慣。';
+    } else if (score <= 3) {
+      grade = '輕度白內障'; cls = '';
+      rec = '每半年回診追蹤，若視力持續下降則評估手術時機。';
+    } else if (score <= 5) {
+      grade = '中度白內障'; cls = ' warn';
+      rec = '建議安排白內障摘除手術諮詢，評估人工水晶體選擇。勿夜間駕駛。';
+    } else {
+      grade = '重度白內障（成熟期）'; cls = ' danger';
+      rec = '強烈建議盡快安排手術。術後多數患者可恢復良好視力，成功率 > 99%。';
+    }
+
+    const vLine = diagState.vision
+      ? `右眼 ${diagState.vision.right ? diagState.vision.right.toFixed(2) : '未測'} ／ 左眼 ${diagState.vision.left ? diagState.vision.left.toFixed(2) : '未測'}`
+      : '（未執行）';
+    const pLine = diagState.pressure
+      ? `${diagState.pressure.right}／${diagState.pressure.left} mmHg`
+      : '（未執行）';
+    const sLine = diagState.slit ? diagState.slit.label : '（未執行）';
+
+    box.className = 'step-result-box' + cls;
+    box.innerHTML = `
+      <div style="margin-bottom:0.6rem;font-size:0.78rem;color:inherit;opacity:0.8;">
+        視力：${vLine}　眼壓：${pLine}　裂隙燈：${sLine}
+      </div>
+      <strong style="font-size:1rem;">診斷結果：${grade}</strong>
+      <br><br>${rec}
+    `;
+    box.style.display = 'block';
+    document.querySelector('#step4-card .step-btn').classList.add('done');
+  }
+
+  // ══════════════════════════════════════════
+  // GAME — Eye Classification
+  // ══════════════════════════════════════════
+  const GCASES = [
+    { grade: 0, label: '正常眼睛',   pts: 100, tip: '水晶體完全透明，光線均勻穿透。' },
+    { grade: 0, label: '正常眼睛',   pts: 100, tip: '健康水晶體無任何混濁。' },
+    { grade: 1, label: '輕度白內障', pts: 200, tip: '邊緣出現細小混濁點，核心仍透明。' },
+    { grade: 1, label: '輕度白內障', pts: 200, tip: '早期白內障，輕微散光與色偏。' },
+    { grade: 2, label: '中度白內障', pts: 300, tip: '核心霧化明顯，混濁超過 30%。' },
+    { grade: 2, label: '中度白內障', pts: 300, tip: '水晶體漸趨不透明，視力顯著下降。' },
+    { grade: 3, label: '重度白內障', pts: 500, tip: '水晶體近乎完全混濁，光線嚴重受阻。' },
+    { grade: 3, label: '重度白內障', pts: 500, tip: '成熟期白內障，需儘速手術。' },
+  ];
+  const GLABELS = ['正常眼睛', '輕度白內障', '中度白內障', '重度白內障'];
+  let gScore = 0, gLives = 3, gIdx = 0, gOrder = [], gAnswered = false;
+
+  function gShuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]];
+    } return a;
+  }
+
+  function initGame() {
+    gScore = 0; gLives = 3; gIdx = 0; gAnswered = false;
+    gOrder = gShuffle([...Array(8).keys()]);
+    document.getElementById('g-gameover').style.display = 'none';
+    document.getElementById('g-choices').style.display = 'grid';
+    document.getElementById('g-feedback').textContent = '';
+    renderLives(); showGQuestion();
+  }
+
+  function resetGame() { initGame(); }
+
+  function renderLives() {
+    document.getElementById('g-lives').innerHTML =
+      Array.from({ length: 3 }, (_, i) =>
+        `<span style="font-size:1.1rem;">${i < gLives ? '❤️' : '🖤'}</span>`
+      ).join('');
+  }
+
+  function drawEyeCanvas(grade) {
+    const canvas = document.getElementById('g-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width, h = canvas.height, cx = w / 2, cy = h / 2;
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#111820'; ctx.fillRect(0, 0, w, h);
+    // sclera
+    ctx.save(); ctx.beginPath();
+    ctx.ellipse(cx, cy, 115, 74, 0, 0, Math.PI * 2);
+    ctx.fillStyle = '#f8f4ee'; ctx.fill();
+    ctx.strokeStyle = '#c8baa0'; ctx.lineWidth = 1; ctx.stroke(); ctx.restore();
+    // iris
+    const irisR = 50;
+    ctx.save(); ctx.beginPath();
+    ctx.arc(cx, cy, irisR, 0, Math.PI * 2);
+    ctx.fillStyle = '#1a9d8f'; ctx.fill(); ctx.restore();
+    // iris texture
+    ctx.save(); ctx.beginPath();
+    ctx.arc(cx, cy, irisR, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)'; ctx.lineWidth = 8;
+    ctx.setLineDash([3, 7]); ctx.stroke(); ctx.restore();
+    // clouds by grade
+    if (grade > 0) {
+      const counts = [0, 4, 8, 14];
+      const opacities = [0, 0.35, 0.65, 0.92];
+      ctx.save();
+      for (let i = 0; i < counts[grade]; i++) {
+        const ang = Math.random() * Math.PI * 2;
+        const dist = Math.random() * irisR * 0.8;
+        const r = 5 + Math.random() * 13;
+        ctx.beginPath();
+        ctx.arc(cx + Math.cos(ang) * dist, cy + Math.sin(ang) * dist, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(240,220,150,${opacities[grade] * (0.6 + Math.random() * 0.5)})`;
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+    // pupil
+    ctx.save(); ctx.beginPath();
+    ctx.arc(cx, cy, 20, 0, Math.PI * 2);
+    ctx.fillStyle = grade === 3 ? '#3a2a10' : '#0a1117'; ctx.fill(); ctx.restore();
+    // highlight
+    ctx.save(); ctx.beginPath();
+    ctx.arc(cx - 10, cy - 10, 7, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,0.42)'; ctx.fill(); ctx.restore();
+    // eyelids
+    ctx.save();
+    ctx.beginPath(); ctx.moveTo(cx - 115, cy); ctx.quadraticCurveTo(cx, cy - 74, cx + 115, cy);
+    ctx.strokeStyle = '#b8a070'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx - 115, cy); ctx.quadraticCurveTo(cx, cy + 74, cx + 115, cy);
+    ctx.stroke(); ctx.restore();
+  }
+
+  function showGQuestion() {
+    if (gIdx >= 8) { endGame(true); return; }
+    gAnswered = false;
+    const cas = GCASES[gOrder[gIdx]];
+    drawEyeCanvas(cas.grade);
+    document.getElementById('g-score').textContent = gScore;
+    document.getElementById('g-level').textContent = (gIdx + 1) + ' / 8';
+    document.getElementById('g-progress').style.width = ((gIdx + 1) / 8 * 100) + '%';
+    document.getElementById('g-feedback').textContent = '';
+    const ch = document.getElementById('g-choices');
+    ch.style.display = 'grid'; ch.innerHTML = '';
+    GLABELS.forEach(lbl => {
+      const b = document.createElement('button');
+      b.className = 'g-choice'; b.textContent = lbl;
+      b.onclick = () => gAnswer(lbl, cas, b);
+      ch.appendChild(b);
+    });
+  }
+
+  function gAnswer(chosen, cas, btn) {
+    if (gAnswered) return;
+    gAnswered = true;
+    const correct = chosen === cas.label;
+    document.querySelectorAll('.g-choice').forEach(b => {
+      b.disabled = true;
+      if (b.textContent === cas.label) b.classList.add('correct');
+      else if (b === btn && !correct) b.classList.add('wrong');
+    });
+    const fb = document.getElementById('g-feedback');
+    if (correct) {
+      gScore += cas.pts;
+      document.getElementById('g-score').textContent = gScore;
+      fb.innerHTML = `<span style="color:#7de8b8">✓ 答對！+${cas.pts} 分</span> — ${cas.tip}`;
+    } else {
+      gLives--;
+      renderLives();
+      fb.innerHTML = `<span style="color:#ff9a9a">✗ 答錯！正確答案是「${cas.label}」。</span> ${cas.tip}`;
+      if (gLives <= 0) { setTimeout(() => endGame(false), 1500); return; }
+    }
+    gIdx++;
+    setTimeout(showGQuestion, 1700);
+  }
+
+  function endGame(win) {
+    document.getElementById('g-choices').style.display = 'none';
+    document.getElementById('g-gameover').style.display = 'block';
+    let rank = gScore >= 2000 ? '優秀眼科醫師 🏆' : gScore >= 1200 ? '熟練判讀員 🥈' : gScore >= 600 ? '初級學員 🎓' : '繼續加油 💪';
+    document.getElementById('go-emoji').textContent = win ? '🎉' : '💀';
+    document.getElementById('go-title').textContent = win ? '恭喜通關！' : '生命值耗盡，遊戲結束';
+    document.getElementById('go-desc').textContent = `最終得分：${gScore} 分　等級：${rank}`;
+  }
+
+  // init game on page load
+  window.addEventListener('DOMContentLoaded', () => { initGame(); });
 </script>
 </body>
 </html>
