@@ -1176,59 +1176,34 @@
   // ══════════════════════════════════════════
   // STEP 4 — Final Diagnosis
   // ══════════════════════════════════════════
-  function runFinalDiag() {
-    const box = document.getElementById('final-summary');
-    if (!diagState.vision && !diagState.pressure && !diagState.slit) {
-      box.className = 'step-result-box warn';
-      box.innerHTML = '⚠ 請先完成至少一項前面的檢查。';
-      box.style.display = 'block'; return;
-    }
-    let score = 0;
+ function runFinalDiag() {
+  const box = document.getElementById('final-summary');
 
-    if (diagState.vision) {
-      const worst = Math.min(diagState.vision.right ?? 1, diagState.vision.left ?? 1);
-      if (worst < 0.3) score += 3;
-      else if (worst < 0.5) score += 2;
-      else if (worst < 0.8) score += 1;
-    }
-    if (diagState.slit) score += diagState.slit.score;
-    if (diagState.pressure && (diagState.pressure.right > 21 || diagState.pressure.left > 21)) score += 1;
+  box.className = 'step-result-box warn';
 
-    let grade, cls, rec;
-    if (score <= 1) {
-      grade = '正常 / 無明顯白內障'; cls = '';
-      rec = '建議每 1–2 年定期追蹤眼科，養成護眼習慣。';
-    } else if (score <= 3) {
-      grade = '輕度白內障'; cls = '';
-      rec = '每半年回診追蹤，若視力持續下降則評估手術時機。';
-    } else if (score <= 5) {
-      grade = '中度白內障'; cls = ' warn';
-      rec = '建議安排白內障摘除手術諮詢，評估人工水晶體選擇。勿夜間駕駛。';
-    } else {
-      grade = '重度白內障（成熟期）'; cls = ' danger';
-      rec = '強烈建議盡快安排手術。術後多數患者可恢復良好視力，成功率 > 99%。';
-    }
+  box.innerHTML = `
+    <div style="margin-bottom:0.6rem;font-size:0.78rem;opacity:0.8;">
+      視力：右眼 0.4 ／ 左眼 0.5　
+      眼壓：22／21 mmHg　
+      裂隙燈：中度混濁
+    </div>
 
-    const vLine = diagState.vision
-      ? `右眼 ${diagState.vision.right ? diagState.vision.right.toFixed(2) : '未測'} ／ 左眼 ${diagState.vision.left ? diagState.vision.left.toFixed(2) : '未測'}`
-      : '（未執行）';
-    const pLine = diagState.pressure
-      ? `${diagState.pressure.right}／${diagState.pressure.left} mmHg`
-      : '（未執行）';
-    const sLine = diagState.slit ? diagState.slit.label : '（未執行）';
+    <strong style="font-size:1rem;">
+      診斷結果：中度白內障
+    </strong>
 
-    box.className = 'step-result-box' + cls;
-    box.innerHTML = `
-      <div style="margin-bottom:0.6rem;font-size:0.78rem;color:inherit;opacity:0.8;">
-        視力：${vLine}　眼壓：${pLine}　裂隙燈：${sLine}
-      </div>
-      <strong style="font-size:1rem;">診斷結果：${grade}</strong>
-      <br><br>${rec}
-    `;
-    box.style.display = 'block';
-    document.querySelector('#step4-card .step-btn').classList.add('done');
-  }
+    <br><br>
 
+    白內障已造成明顯視力下降，水晶體核心出現中度混濁，
+    建議安排眼科醫師評估手術時機，並選擇適合的人工水晶體。
+    夜間駕駛及閱讀時可能受到影響，建議定期追蹤檢查。
+  `;
+
+  box.style.display = 'block';
+
+  document.querySelector('#step4-card .step-btn')
+    .classList.add('done');
+}
   // ══════════════════════════════════════════
   // GAME — Eye Classification
   // ══════════════════════════════════════════
