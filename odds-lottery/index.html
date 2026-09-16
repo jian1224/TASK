@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>覺金頂潮 ODDS｜抽獎系統</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="bg-logo" aria-hidden="true">
+    <img src="assets/img/logo1_nobg.png" alt="">
+  </div>
+  <div class="bg-glow"></div>
+
+  <header class="topbar">
+    <img class="corner-logo" src="assets/img/logo2_nobg.png" alt="覺金頂潮 ODDS">
+  </header>
+
+  <main id="app">
+
+    <!-- 首頁：輸入號碼範圍 -->
+    <section id="screen-setup" class="screen active">
+      <div class="panel">
+        <p class="eyebrow">ODDS LOTTERY SYSTEM</p>
+        <h1 class="title">抽獎系統</h1>
+        <p class="subtitle">請輸入本輪參賽號碼範圍，第一階段將抽出 5 強</p>
+
+        <div class="range-form">
+          <div class="field">
+            <label for="range-min">最小號碼</label>
+            <input type="number" id="range-min" value="1" inputmode="numeric">
+          </div>
+          <span class="dash">—</span>
+          <div class="field">
+            <label for="range-max">最大號碼</label>
+            <input type="number" id="range-max" value="50" inputmode="numeric">
+          </div>
+        </div>
+
+        <p class="error" id="setup-error"></p>
+
+        <button id="btn-start" class="btn btn-primary">
+          <span>開始抽獎</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 第一階段：打鬥影片 -> 五強號碼 -->
+    <section id="screen-round1" class="screen">
+      <video id="video-round1" class="stage-video" src="assets/video/round1_battle.mp4" playsinline preload="auto"></video>
+      <div class="overlay overlay-round1" id="overlay-round1">
+        <p class="eyebrow">ROUND 1 RESULT</p>
+        <h2 class="stage-title">晉級五強</h2>
+        <div class="number-grid" id="round1-numbers"></div>
+        <button id="btn-to-final" class="btn btn-primary">
+          <span>進入最終決戰</span>
+        </button>
+      </div>
+      <button class="skip-btn" data-skip="round1">跳過影片 ▸</button>
+    </section>
+
+    <!-- 最終決戰：影片 -> 最終得主 -->
+    <section id="screen-final" class="screen">
+      <video id="video-final" class="stage-video" src="assets/video/final_battle.mp4" playsinline preload="auto"></video>
+      <div class="overlay overlay-final" id="overlay-final">
+        <p class="eyebrow">FINAL RESULT</p>
+        <h2 class="stage-title">最終得主</h2>
+        <div class="winner-number" id="winner-number">--</div>
+        <div class="final-btns">
+          <button id="btn-reset" class="btn btn-secondary"><span>重新開始</span></button>
+        </div>
+      </div>
+      <button class="skip-btn" data-skip="final">跳過影片 ▸</button>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
